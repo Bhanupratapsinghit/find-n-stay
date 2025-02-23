@@ -67,13 +67,23 @@ const Listing = () => {
           container: vrContainer.current,
         });
 
-        const panorama = new PANOLENS.ImagePanorama(listing.imageUrls[0]);
+        listing.imageUrls.forEach((url) => {
+          const panorama = new PANOLENS.ImagePanorama(url);
 
-        panorama.addEventListener("load", () => {
-          console.log("VR loaded successfully");
+          panorama.addEventListener("load", () => {
+            console.log(`VR image loaded successfully: ${url}`);
+          });
+
+          panorama.addEventListener("error", (e) => {
+            console.error(`Error loading VR image: ${url}`, e);
+          });
+
+          viewerRef.current.add(panorama);
         });
 
-        viewerRef.current.add(panorama);
+        console.log("Panoramas added to viewer:", viewerRef.current);
+      } else {
+        console.warn("No listing or image URLs found, or VR container not available.");
       }
     };
 
@@ -89,24 +99,31 @@ const Listing = () => {
       {listing && !loading && !error && (
         <div>
           <div className="">
-            <Swiper navigation>
+            {/* <Swiper navigation>
               {listing.imageUrls.map((url) => (
                 <SwiperSlide key={url}>
                   <div
                     className="h-[550px]"
                     style={{
-                      background: `url(${url}) center no-repeat`,
+                      backgroundImage: `url(${url})`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
                     }}
                   ></div>
                 </SwiperSlide>
               ))}
-            </Swiper>
+            </Swiper> */}
 
-            <div
-              ref={vrContainer}
-              className="w-full h-[500px] bg-gray-200"
-            ></div>
+            <div className="w-full h-[500px] bg-gray-200">
+              <iframe
+                src="https://panoraven.com/en/embed/I9elKG9ooH"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
             <div className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer">
               <FaShare
                 className="text-slate-500"
