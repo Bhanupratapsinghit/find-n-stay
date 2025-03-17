@@ -8,7 +8,7 @@ import {
   signOutUserSuccess,
   signOutUserFailure,
 } from "../redux/user/userSlice";
-
+import Search from "../pages/Search";
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -96,7 +96,7 @@ export default function Header() {
               Home
             </li>
           </Link>
-          <Link to="/about">
+          <Link to="/apartments">
             <li className="hidden font-medium sm:inline hover:underline">
               Apartments
             </li>
@@ -106,6 +106,8 @@ export default function Header() {
               About Us
             </li>
           </Link>
+
+          {/* <Search /> */}
 
           {/* <Link to='/profile'>
                     {

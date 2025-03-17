@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem";
 import Footer from "../components/Footer";
+import Apartments from "./Apartments";
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
@@ -91,6 +91,7 @@ export default function Home() {
                   </svg> */}
             </div>
           </div>
+          {/* <SearchBox /> */}
         </div>
 
         <div>
@@ -117,6 +118,7 @@ export default function Home() {
             </SwiperSlide>
           ))}
       </Swiper> */}
+        <Apartments/>
 
       <div className="w-full p-3 flex flex-col gap-8 justify-center items-center">
         {offerListings && offerListings.length > 0 && (
@@ -179,7 +181,9 @@ export default function Home() {
             </div>
           </div>
         )}
+
       </div>
+
       <Footer />
     </div>
   );
