@@ -161,7 +161,7 @@ export default function Header() {
             )}
           </button>
           {currentUser && isHovered && (
-            <div className="parent absolute w-40 z-10 top-full left-0 bg-white shadow-lg rounded-md p-2 mt-2 flex flex-col">
+            <div className="parent absolute w-40 z-10 top-full -left-36 bg-white shadow-lg rounded-md p-2 mt-2 flex flex-col">
               <Link to="/profile" className="w-full">
                 <p className="block child w-full font-medium text-left py-1 px-3 hover:bg-gray-200 group">
                   Profile
